@@ -1,0 +1,146 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รักพักพิงที่สุดในโลก</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Sarabun', sans-serif;
+      background: linear-gradient(to bottom, #ffe6e6, #fff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #ff4d6d;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #333;
+      margin: 10px 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #ff80ab;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #ff4d6d;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .photo {
+      margin-top: 20px;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 10px;
+    }
+
+    .stickers {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .sticker {
+      position: absolute;
+      width: 40px;
+      animation: float 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- เพลง -->
+  <audio autoplay loop>
+    <source src="https://dl.dropboxusercontent.com/s/6r90iy43cbqs8fi/I%20Love%20You%203000%20-%20Stephanie%20Poetri.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- หน้าต้อนรับ -->
+  <div id="welcome">
+    <h1>รักพักพิงที่สุดในโลก</h1>
+    <p>มีบางอย่างที่เราอยากให้เธอรู้...</p>
+    <button onclick="showNext()">กดที่นี่</button>
+  </div>
+
+  <!-- หน้าปลอบใจ -->
+  <div id="message" class="hidden">
+    <h1>ถึงคนสำคัญของเรา 💖</h1>
+    <p>ขอโทษนะที่บางครั้งเราทำให้เธอเสียใจ<br>
+    เรายังรักเธอเหมือนเดิม และจะพยายามให้ดีขึ้นในทุกๆ วัน</p>
+
+    <!-- ตำแหน่งรูป -->
+    <img src="https://img5.pic.in.th/file/secure-sv1/6902F778-DE57-4076-B233-53B414CE5F14ea0e9b80615d2c78.jpeg" alt="พักพิง" class="photo">
+  </div>
+
+  <!-- เอฟเฟกต์ -->
+  <div class="stickers"></div>
+
+  <script>
+    function showNext() {
+      document.getElementById("welcome").classList.add("hidden");
+      document.getElementById("message").classList.remove("hidden");
+    }
+
+    const stickers = ['💖', '🌸', '💕', '🐻', '🎀', '💌', '💗'];
+    const container = document.querySelector('.stickers');
+
+    function createSticker() {
+      const el = document.createElement('div');
+      el.className = 'sticker';
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (3 + Math.random() * 3) + 's';
+      el.style.fontSize = (20 + Math.random() * 20) + 'px';
+      el.textContent = stickers[Math.floor(Math.random() * stickers.length)];
+      container.appendChild(el);
+
+      setTimeout(() => container.removeChild(el), 6000);
+    }
+
+    setInterval(createSticker, 300);
+  </script>
+
+</body>
+</html><script>function myFunction() {
+  alert("Button Clicked")
+}</script>
